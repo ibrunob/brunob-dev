@@ -22,6 +22,18 @@ hardcode content, so that is the only file to touch for a text change.
 
 Anything still marked `TODO:` is placeholder scaffolding.
 
+## Discoverability
+
+`npm run build` also emits, all derived from `src/content/site.ts`:
+
+- `sitemap.xml` and `robots.txt` (which explicitly welcomes answer-engine crawlers)
+- `llms.txt`, a plain-language summary of the whole portfolio for AI search
+- JSON-LD structured data (`Person` + `WebSite`) injected into the HTML
+
+The page also registers five read-only [WebMCP](https://webmachinelearning.github.io/webmcp/)
+tools on `document.modelContext`, so an agent in the browser can call
+`list_projects` or `get_experience` rather than scraping the rendered text.
+
 ## Deploying
 
 Pushing to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml),
