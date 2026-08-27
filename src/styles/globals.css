@@ -1,0 +1,240 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter';
+
+/* Theme is driven by a `dark` class on <html> (set by the inline script in
+   index.html and by useTheme) so the toggle always wins over the OS setting. */
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* McQueen Grotesk is a commercial face (Zetafonts): it is not on Google
+     Fonts or npm, so it cannot be bundled here. Listing it first means it is
+     used wherever it is installed locally, and everyone else falls through to
+     Inter with no failed request. To self-host it for visitors, drop the
+     woff2 files into public/fonts/ and uncomment the @font-face block below. */
+  --font-sans: 'McQueen Grotesk', 'Inter Variable', ui-sans-serif, system-ui,
+    -apple-system, 'Segoe UI', sans-serif;
+
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-fg: #18181b;
+  --color-muted: #71717a;
+  --color-subtle: #f4f4f5;
+  --color-border: #e4e4e7;
+  --color-accent: #2563eb;
+
+  /* Marker ink for emphasised words. Not part of the neutral ramp on
+     purpose: it is the one warm colour on the site. */
+  --color-highlight: rgb(255, 81, 0);
+
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* Where the top bar switches from one row to a centred stack. Matches the
+     breakpoint surya.website uses for the same bar. */
+  --breakpoint-bar: 810px;
+}
+
+/* Dark palette. Unlayered, so it overrides the @layer theme defaults above. */
+.dark {
+  --color-bg: #09090b;
+  --color-surface: #111113;
+  --color-fg: #fafafa;
+  --color-muted: #a1a1aa;
+  --color-subtle: #18181b;
+  --color-border: #27272a;
+  --color-accent: #60a5fa;
+  /* Orange ink turns muddy over near-black, so the marker goes blue here. */
+  --color-highlight: rgb(64, 156, 255);
+}
+
+/* One ink, used by the text highlighter and by the nav stroke. Custom
+   properties resolve var() at use time, so this picks up whichever
+   --color-highlight the active theme set. */
+:root {
+  --highlight-ink: linear-gradient(
+    75deg,
+    color-mix(in srgb, var(--color-highlight), transparent 40%),
+    color-mix(in srgb, var(--color-highlight), transparent 75%) 4%,
+    color-mix(in srgb, var(--color-highlight), transparent 58%) 96%,
+    color-mix(in srgb, var(--color-highlight), transparent 28%)
+  );
+}
+
+/* Self-hosting McQueen Grotesk: put the licensed woff2 files in public/fonts/
+   under these names and uncomment. `local()` comes first so a machine that
+   already has the font installed never downloads it.
+
+@font-face {
+  font-family: 'McQueen Grotesk';
+  src:
+    local('McQueen Grotesk'),
+    url('/fonts/mcqueen-grotesk-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'McQueen Grotesk';
+  src:
+    local('McQueen Grotesk Medium'),
+    url('/fonts/mcqueen-grotesk-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+*/
+
+@layer components {
+  /* Highlighter pen over a run of words. box-decoration-break: clone means a
+     phrase that wraps gets rounded ends on both lines instead of one slab. */
+  .mark {
+    display: inline;
+    margin: -0.04em -0.06em;
+    padding: 0.04em 0.06em;
+    border-radius: 0.2em 0.15em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    background-image: var(--highlight-ink);
+  }
+
+  /* The same ink drawn as a thin stroke under the active nav item, sized in em
+     so it tracks the 13px nav type.
+     
+     Two elements, not one, and that split is load-bearing: Motion needs sole
+     ownership of `transform` on the element carrying `layoutId`, because that
+     is how it projects the stroke from the old item to the new one. Putting
+     the tilt on the same element freezes the slide part-way. So .nav-ink is
+     the box Motion animates, and .nav-ink-stroke inside it holds the rotation
+     and the ink. */
+  /* The two edges are transitioned at different speeds, and Nav.tsx swaps the
+     order depending on the direction of travel: the edge leading the move
+     lands in 170ms while the trailing edge takes 300ms to catch up, so the
+     stroke stretches over both items and then pulls itself in. */
+  .nav-ink {
+    position: absolute;
+    bottom: 0;
+    height: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition-property: left, right, opacity;
+    transition-timing-function: var(--ease-out-quart);
+    transition-duration: 300ms, 170ms, 150ms;
+  }
+
+  .nav-ink-stroke {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.2em 0.15em;
+    transform: rotate(-1.8deg);
+    background-image: var(--highlight-ink);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Scrollbar. Firefox takes the standard properties, WebKit the
+     pseudo-elements, and both read the same theme tokens so the bar follows
+     light and dark. The border on the thumb is what gives it its inset look:
+     it paints in the page background, leaving a thin pill in the middle. */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    border: 4px solid var(--color-bg);
+    border-radius: 9999px;
+    transition: background-color 150ms var(--ease-out-quart);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-muted);
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-accent) 22%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  /* Theme switch. Where view transitions exist we drive the reveal ourselves
+     (a circle growing out of the toggle), so the default cross-fade of the two
+     snapshots is turned off and the new one is stacked on top. */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
+  ::view-transition-old(root) {
+    z-index: 0;
+  }
+
+  ::view-transition-new(root) {
+    z-index: 1;
+  }
+
+  /* Fallback for browsers without view transitions: fade the colour-carrying
+     properties for exactly as long as the switch lasts, then get out of the
+     way so hover states keep their own 150ms timing. */
+  .theme-transition,
+  .theme-transition *,
+  .theme-transition *::before,
+  .theme-transition *::after {
+    transition:
+      background-color 260ms var(--ease-out-quart),
+      border-color 260ms var(--ease-out-quart),
+      color 260ms var(--ease-out-quart),
+      fill 260ms var(--ease-out-quart) !important;
+  }
+
+  /* Nothing on this site animates for longer than 300ms; for users who ask for
+     reduced motion, nothing animates at all. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+      animation: none !important;
+    }
+  }
+}
