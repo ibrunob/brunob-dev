@@ -24,6 +24,8 @@ export type TimelineEntry = {
   organisation: string
   period: string
   description: string
+  /** Drives the `alumniOf` / `worksFor` split in the structured data. */
+  kind: 'work' | 'education'
 }
 
 export type SocialLink = {
@@ -159,6 +161,7 @@ export const site = {
     {
       title: 'Programmer',
       organisation: 'MediaLab, Universidad de Oviedo',
+      kind: 'work',
       period: 'Jan 2026 – Mar 2026',
       description:
         'Built most of **SensorLab**, the lab’s sensor platform: a PHP REST API and a React and TypeScript dashboard covering session authentication, organisation-scoped access control, a three-tier role system, user and device management, alert rules, API logs and generated reports. Also wrote firmware for a static air-quality station and rebuilt the search on MediaLab’s own site using Levenshtein distance and alias scoring.',
@@ -166,6 +169,7 @@ export const site = {
     {
       title: 'Junior application developer',
       organisation: 'Omnia 7D / MANTOTAL',
+      kind: 'work',
       period: 'Mar 2025 – Jul 2025',
       description:
         'Internal applications to streamline company processes: an Android app for employees connected to the intranet, database and FTP server (Java, PHP, MySQL); a **Python machine-learning tool** recognising buildings, doorways and kerb ramps in 360º video from Insta360 cameras; relational database design for the Cáceres city council GIS project; and maintenance of a 2015 occupational-risk inspection app.',
@@ -173,12 +177,14 @@ export const site = {
     {
       title: 'Computer Engineering',
       organisation: 'Escuela Politécnica de Ingeniería de Gijón',
+      kind: 'education',
       period: '2026 – present',
       description: 'Currently in progress.',
     },
     {
       title: 'Multiplatform Application Development (CFGS)',
       organisation: 'CIFP La Laboral',
+      kind: 'education',
       period: '2024 – 2026',
       description: 'Finished **top of my cohort** with a 9.35 average.',
     },

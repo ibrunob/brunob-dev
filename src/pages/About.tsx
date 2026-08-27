@@ -1,12 +1,12 @@
 import { Rich } from '@/components/Rich'
 import { Section } from '@/components/Section'
 import { site } from '@/content/site'
-import { useDocumentTitle } from '@/hooks/useDocumentTitle'
+import { usePageMeta } from '@/hooks/usePageMeta'
 
 const DESCRIPTION = 'About Bruno Ortiz Blanco: background, stack and experience.'
 
 export function About() {
-  useDocumentTitle(`About · ${site.name}`, DESCRIPTION)
+  usePageMeta(`About · ${site.name}`, DESCRIPTION)
 
   return (
     <div className="space-y-16">

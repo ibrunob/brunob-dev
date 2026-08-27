@@ -1,9 +1,9 @@
 import { Link } from 'react-router'
 import { site } from '@/content/site'
-import { useDocumentTitle } from '@/hooks/useDocumentTitle'
+import { usePageMeta } from '@/hooks/usePageMeta'
 
 export function NotFound() {
-  useDocumentTitle(`Not found · ${site.name}`)
+  usePageMeta(`Not found · ${site.name}`)
 
   return (
     <div className="space-y-4">

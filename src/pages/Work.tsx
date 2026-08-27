@@ -1,11 +1,11 @@
 import { ProjectCard } from '@/components/ProjectCard'
 import { site } from '@/content/site'
-import { useDocumentTitle } from '@/hooks/useDocumentTitle'
+import { usePageMeta } from '@/hooks/usePageMeta'
 
 const DESCRIPTION = 'Projects built by Bruno Ortiz Blanco.'
 
 export function Work() {
-  useDocumentTitle(`Work · ${site.name}`, DESCRIPTION)
+  usePageMeta(`Work · ${site.name}`, DESCRIPTION)
 
   return (
     <div className="space-y-10">

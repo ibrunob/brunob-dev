@@ -5,10 +5,10 @@ import { ProjectCard } from '@/components/ProjectCard'
 import { Rich } from '@/components/Rich'
 import { Section } from '@/components/Section'
 import { featuredProjects, site } from '@/content/site'
-import { useDocumentTitle } from '@/hooks/useDocumentTitle'
+import { usePageMeta } from '@/hooks/usePageMeta'
 
 export function Home() {
-  useDocumentTitle(`${site.name} · ${site.role}`, site.intro)
+  usePageMeta(`${site.name} · ${site.role}`, site.intro)
 
   return (
     <div className="space-y-16">
