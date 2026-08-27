@@ -26,6 +26,15 @@
      purpose: it is the one warm colour on the site. */
   --color-highlight: rgb(255, 81, 0);
 
+  /* Stops of the highlight gradient. They live in @theme on purpose: that
+     output lands in @layer theme, and the unlayered .dark rule beats it. A
+     plain :root here would win by source order instead and the dark values
+     would never apply. */
+  --ink-1: 40%;
+  --ink-2: 75%;
+  --ink-3: 58%;
+  --ink-4: 28%;
+
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
 
   /* Where the top bar switches from one row to a centred stack. Matches the
@@ -42,20 +51,38 @@
   --color-subtle: #18181b;
   --color-border: #27272a;
   --color-accent: #60a5fa;
-  /* Orange ink turns muddy over near-black, so the marker goes blue here. */
-  --color-highlight: rgb(64, 156, 255);
+  /* A muted cyan, laid on thin. Two earlier attempts overshot: a bright blue
+     read as a glow because it sat lighter than the surface, and a deep blue
+     at full strength read as a solid slab. What works on a dark surface is a
+     tint, not a block.
+     
+     It stays a colour rather than a neutral veil because the nav stroke is
+     drawn with this same ink: a grey stroke would leave the active page
+     without any colour cue at all. For a near-neutral variant instead, use
+     rgb(207, 224, 255) with the stops at 86/94/90/80. */
+  --color-highlight: rgb(34, 211, 238);
+
+  --ink-1: 88%;
+  --ink-2: 95%;
+  --ink-3: 92%;
+  --ink-4: 84%;
 }
 
 /* One ink, used by the text highlighter and by the nav stroke. Custom
    properties resolve var() at use time, so this picks up whichever
-   --color-highlight the active theme set. */
+   --color-highlight and stop values the active theme set.
+   
+   The four stops are variables rather than literals because dark mode needs
+   the same gradient at a lower strength: a dark surface has far less room
+   above it than paper has below it, so the ink that reads as a marker on
+   white reads as a solid slab on black. */
 :root {
   --highlight-ink: linear-gradient(
     75deg,
-    color-mix(in srgb, var(--color-highlight), transparent 40%),
-    color-mix(in srgb, var(--color-highlight), transparent 75%) 4%,
-    color-mix(in srgb, var(--color-highlight), transparent 58%) 96%,
-    color-mix(in srgb, var(--color-highlight), transparent 28%)
+    color-mix(in srgb, var(--color-highlight), transparent var(--ink-1)),
+    color-mix(in srgb, var(--color-highlight), transparent var(--ink-2)) 4%,
+    color-mix(in srgb, var(--color-highlight), transparent var(--ink-3)) 96%,
+    color-mix(in srgb, var(--color-highlight), transparent var(--ink-4))
   );
 }
 
@@ -122,13 +149,18 @@
     transition-duration: 300ms, 170ms, 150ms;
   }
 
+  /* Flat colour, not the gradient. The uneven stops are what make a wide
+     highlight look hand-drawn, and none of that survives on a 4px line; what
+     a thin stroke does need is more opacity than a block, or it reads far
+     lighter at the same nominal value. Keeping it separate also means tuning
+     the text highlight cannot quietly erase the nav. */
   .nav-ink-stroke {
     display: block;
     width: 100%;
     height: 100%;
     border-radius: 0.2em 0.15em;
     transform: rotate(-1.8deg);
-    background-image: var(--highlight-ink);
+    background-color: color-mix(in srgb, var(--color-highlight), transparent 25%);
   }
 }
 
