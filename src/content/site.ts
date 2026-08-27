@@ -46,21 +46,24 @@ export const site = {
   url: 'https://brunob.dev',
   email: 'info@brunob.dev',
 
-  /** Rendered as a label/value list under the intro, not as pills. */
+  /** Not rendered any more: /about says all of this in prose. It stays as
+   *  data because the structured data takes the locality from it, and the OG
+   *  card and llms.txt both read it. */
   meta: [
     { label: 'Based in', value: 'Gijón, Spain' },
-    { label: 'Studying', value: 'Computer Engineering, University of Oviedo' },
+    { label: 'Studying', value: 'Computer Science, University of Oviedo' },
   ],
 
   intro:
-    'I build software that ends up in front of **real people**: Apps ' +
-    'and services for companies, and web tools of my own that ' +
-    'occasionally get away from me.',
+    'I build software that ends up in front of **real people**: small ' +
+    'websites for everyday problems, apps and services for companies, ' +
+    'and web tools of my own that occasionally grow beyond my ' +
+    'expectations.',
 
   home: [
     'I finished a higher vocational degree in Multiplatform Application ' +
       'Development at CIFP La Laboral and I am now studying Computer ' +
-      'Engineering at the Escuela Politécnica de Ingeniería in Gijón. In ' +
+      'Science at the Escuela Politécnica de Ingeniería in Gijón. In ' +
       'between I have written **internal tooling** in Java, Kotlin and Python for ' +
       'companies around Asturias, and spent three months at MediaLab, where I ' +
       'wrote the **API**, the dashboard and the firmware of their sensor platform.',
@@ -78,7 +81,7 @@ export const site = {
       'Multiplatform Application Development at CIFP La Laboral, which I ' +
       'finished in 2026 **top of my cohort** with a 9.35 average. Now I am ' +
       'taking the long way ' +
-      'round with a Computer Engineering degree at the University of Oviedo.',
+      'round with a Computer Science degree at the University of Oviedo.',
     'Most of my professional work so far has been internal tooling: an ' +
       'Android app for employees wired up to an intranet, a database and an ' +
       'FTP server; a Python tool using **machine learning** to recognise ' +
@@ -175,7 +178,7 @@ export const site = {
         'Internal applications to streamline company processes: an Android app for employees connected to the intranet, database and FTP server (Java, PHP, MySQL); a **Python machine-learning tool** recognising buildings, doorways and kerb ramps in 360º video from Insta360 cameras; relational database design for the Cáceres city council GIS project; and maintenance of a 2015 occupational-risk inspection app.',
     },
     {
-      title: 'Computer Engineering',
+      title: 'Computer Science',
       organisation: 'Escuela Politécnica de Ingeniería de Gijón',
       kind: 'education',
       period: '2026 – present',
