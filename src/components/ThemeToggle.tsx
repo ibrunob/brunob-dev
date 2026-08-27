@@ -33,18 +33,18 @@ export function ThemeToggle() {
       aria-label="Dark mode"
       title={`Switch to ${isDark ? 'light' : 'dark'} theme`}
       onClick={onClick}
-      className="relative flex h-8 w-14 shrink-0 items-center rounded-full bg-fg/5 px-1 transition-colors duration-150 hover:bg-fg/10"
+      className="relative flex h-10 w-[68px] shrink-0 items-center rounded-full bg-fg/5 px-1 transition-colors duration-150 hover:bg-fg/10"
     >
       <span
         className={cn(
-          'flex size-6 items-center justify-center rounded-full border border-border bg-surface text-fg shadow-sm transition-transform duration-200 ease-out',
-          isDark && 'translate-x-6',
+          'flex size-8 items-center justify-center rounded-full border border-border bg-surface text-fg shadow-sm transition-transform duration-200 ease-out',
+          isDark && 'translate-x-7',
         )}
       >
         {isDark ? (
-          <Moon className="size-3.5" aria-hidden />
+          <Moon className="size-[18px]" aria-hidden />
         ) : (
-          <Sun className="size-3.5" aria-hidden />
+          <Sun className="size-[18px]" aria-hidden />
         )}
       </span>
     </button>

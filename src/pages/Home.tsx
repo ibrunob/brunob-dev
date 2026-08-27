@@ -14,23 +14,14 @@ export function Home() {
     <div className="space-y-16">
       <div className="space-y-6">
         <div>
-          <h1 className="text-2xl font-medium tracking-tight text-fg">
+          <h1 className="text-4xl font-medium tracking-tight text-fg">
             {site.name}
           </h1>
-          <p className="text-muted">{site.role}</p>
+          <p className="text-lg text-muted">{site.role}</p>
         </div>
 
-        <p className="text-justify hyphens-auto text-lg leading-relaxed text-fg"><Rich text={site.intro} />
+        <p className="text-justify hyphens-auto text-xl leading-relaxed text-fg"><Rich text={site.intro} />
         </p>
-
-        <dl className="space-y-1.5 text-sm">
-          {site.meta.map((item) => (
-            <div key={item.label} className="flex gap-5">
-              <dt className="w-20 shrink-0 text-muted">{item.label}</dt>
-              <dd className="text-fg">{item.value}</dd>
-            </div>
-          ))}
-        </dl>
       </div>
 
       <div className="text-justify hyphens-auto space-y-4 leading-relaxed text-muted">

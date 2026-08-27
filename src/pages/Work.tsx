@@ -10,7 +10,7 @@ export function Work() {
   return (
     <div className="space-y-10">
       <header className="space-y-2">
-        <h1 className="text-2xl font-medium tracking-tight text-fg">Work</h1>
+        <h1 className="text-4xl font-medium tracking-tight text-fg">Work</h1>
         <p className="text-justify hyphens-auto text-muted">
           Things I have built, newest first. The ones with a link are public;
           the rest live in private repositories.

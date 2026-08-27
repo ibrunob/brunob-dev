@@ -7,7 +7,7 @@ export function NotFound() {
 
   return (
     <div className="space-y-4">
-      <h1 className="text-2xl font-medium tracking-tight text-fg">
+      <h1 className="text-4xl font-medium tracking-tight text-fg">
         Page not found
       </h1>
       <p className="text-muted">

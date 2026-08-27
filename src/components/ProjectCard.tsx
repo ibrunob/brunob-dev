@@ -9,7 +9,7 @@ export function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="-mx-4 rounded-xl px-4 py-4 transition-colors duration-150 hover:bg-subtle">
       <div className="flex items-baseline justify-between gap-4">
-        <h3 className="font-medium text-fg">
+        <h3 className="text-xl font-medium text-fg">
           {primary ? (
             <a
               href={primary}

@@ -11,7 +11,7 @@ export function About() {
   return (
     <div className="space-y-16">
       <header className="space-y-6">
-        <h1 className="text-2xl font-medium tracking-tight text-fg">About</h1>
+        <h1 className="text-4xl font-medium tracking-tight text-fg">About</h1>
         <div className="text-justify hyphens-auto space-y-4 leading-relaxed text-muted">
           {site.about.map((paragraph, i) => (
             <p key={i}>
@@ -39,7 +39,7 @@ export function About() {
           {site.timeline.map((entry) => (
             <li key={`${entry.organisation}-${entry.period}`}>
               <div className="flex flex-wrap items-baseline justify-between gap-x-4">
-                <h3 className="font-medium text-fg">
+                <h3 className="text-xl font-medium text-fg">
                   {entry.title}{' '}
                   <span className="font-normal text-muted">
                     · {entry.organisation}

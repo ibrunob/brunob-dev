@@ -26,9 +26,9 @@ function SocialButton({ link }: { link: SocialLink }) {
       rel="noreferrer"
       aria-label={link.label}
       title={link.label}
-      className="flex size-8 items-center justify-center rounded-lg bg-fg/5 text-fg transition-colors duration-150 hover:bg-fg/10"
+      className="flex size-10 items-center justify-center rounded-lg bg-fg/5 text-fg transition-colors duration-150 hover:bg-fg/10"
     >
-      <Icon className="size-4" />
+      <Icon className="size-5" />
     </a>
   )
 }
@@ -95,7 +95,7 @@ export function Nav() {
     <header className="relative z-20 mx-6 mt-3 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 bar:h-12 bar:flex-nowrap bar:justify-between bar:gap-4">
       <Link
         to="/"
-        className="hidden rounded-sm text-[13px] font-medium text-fg transition-colors duration-150 hover:text-accent bar:block"
+        className="hidden rounded-sm text-base font-medium text-fg transition-colors duration-150 hover:text-accent bar:block"
       >
         {site.shortName}
       </Link>
@@ -112,7 +112,7 @@ export function Nav() {
               end={item.href === '/'}
               className={({ isActive }) =>
                 cn(
-                  'rounded-sm pb-1 text-[13px] transition-colors duration-150',
+                  'rounded-sm pb-1 text-lg transition-colors duration-150',
                   isActive ? 'text-fg' : 'text-muted hover:text-fg',
                 )
               }

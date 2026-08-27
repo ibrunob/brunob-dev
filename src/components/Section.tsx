@@ -12,7 +12,7 @@ export function Section({
   return (
     <section className="space-y-5">
       <div className="flex items-baseline justify-between gap-4">
-        <h2 className="text-sm font-medium tracking-wide text-muted uppercase">
+        <h2 className="text-base font-medium tracking-wide text-muted uppercase">
           {title}
         </h2>
         {action}
