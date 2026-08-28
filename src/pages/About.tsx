@@ -1,3 +1,4 @@
+import { ExternalLink } from '@/components/ExternalLink'
 import { Rich } from '@/components/Rich'
 import { Section } from '@/components/Section'
 import { site } from '@/content/site'
@@ -12,7 +13,7 @@ export function About() {
     <div className="space-y-16">
       <header className="space-y-6">
         <h1 className="text-4xl font-medium tracking-tight text-fg">About</h1>
-        <div className="text-justify hyphens-auto space-y-4 leading-relaxed text-muted">
+        <div className="space-y-4 leading-relaxed text-muted">
           {site.about.map((paragraph, i) => (
             <p key={i}>
               <Rich text={paragraph} />
@@ -49,12 +50,22 @@ export function About() {
                   {entry.period}
                 </span>
               </div>
-              <p className="text-justify hyphens-auto mt-1 text-muted">
+              <p className="mt-1 text-muted">
                 <Rich text={entry.description} />
               </p>
             </li>
           ))}
         </ol>
+      </Section>
+
+      <Section title="CV">
+        <p className="text-justify hyphens-auto text-muted">
+          One page, kept in step with this site.{' '}
+          <ExternalLink href={site.cv} download>
+            Download it here
+          </ExternalLink>
+          .
+        </p>
       </Section>
     </div>
   )

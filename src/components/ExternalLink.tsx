@@ -5,10 +5,12 @@ export function ExternalLink({
   href,
   children,
   className,
+  download,
 }: {
   href: string
   children: React.ReactNode
   className?: string
+  download?: boolean
 }) {
   const external = href.startsWith('http')
 
@@ -16,6 +18,7 @@ export function ExternalLink({
     <a
       href={href}
       {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}
+      {...(download ? { download: '' } : {})}
       className={cn(
         'group inline-flex items-center gap-0.5 rounded-sm text-fg underline decoration-border underline-offset-4 transition-colors duration-150 hover:decoration-accent hover:text-accent',
         className,

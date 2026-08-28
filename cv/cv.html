@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bruno Ortiz Blanco — CV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* A4 with room for the printer. Chrome's "Save as PDF" honours this, so
+         set margins to None in the print dialog and let the page own them. */
+      @page {
+        size: A4;
+        margin: 12mm 15mm;
+      }
+
+      :root {
+        --fg: #18181b;
+        --muted: #52525b;
+        --faint: #71717a;
+        --rule: #e4e4e7;
+        --ink: #ff5100;
+      }
+
+      * { box-sizing: border-box; }
+
+      html { -webkit-text-size-adjust: 100%; }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+        font-size: 9.1pt;
+        line-height: 1.35;
+        color: var(--muted);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* On screen only: show the sheet as a page on a grey desk. */
+      @media screen {
+        body {
+          background: #f4f4f5;
+          padding: 28px 0;
+        }
+        .sheet {
+          width: 210mm;
+          min-height: 297mm;
+          margin: 0 auto;
+          padding: 12mm 15mm;
+          background: #fff;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 12px 34px rgba(0, 0, 0, 0.08);
+        }
+      }
+      @media print {
+        .sheet { width: auto; padding: 0; box-shadow: none; }
+        a { text-decoration: none; }
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 19pt;
+        font-weight: 600;
+        letter-spacing: -0.015em;
+        color: var(--fg);
+      }
+
+      .role {
+        margin: 2px 0 0;
+        font-size: 10.2pt;
+        color: var(--fg);
+        font-weight: 500;
+      }
+
+      /* The one flash of colour, the same marker used on the site. */
+      .role em {
+        font-style: normal;
+        background-image: linear-gradient(
+          75deg,
+          color-mix(in srgb, var(--ink), transparent 45%),
+          color-mix(in srgb, var(--ink), transparent 78%) 4%,
+          color-mix(in srgb, var(--ink), transparent 62%) 96%,
+          color-mix(in srgb, var(--ink), transparent 34%)
+        );
+        border-radius: 0.2em 0.15em;
+        padding: 0.04em 0.14em;
+        margin: -0.04em -0.14em;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .contact {
+        margin: 9px 0 0;
+        font-size: 9pt;
+        color: var(--faint);
+      }
+      .contact a { color: var(--muted); text-decoration: none; }
+      .contact span { color: #c4c4c8; margin: 0 7px; }
+
+      .summary {
+        margin: 10px 0 0;
+        font-size: 9.3pt;
+        color: var(--muted);
+        max-width: 62em;
+      }
+
+      h2 {
+        margin: 10px 0 4px;
+        padding-bottom: 3px;
+        border-bottom: 1px solid var(--rule);
+        font-size: 8.4pt;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--faint);
+      }
+
+      .entry { margin-bottom: 5px; break-inside: avoid; }
+      .entry:last-child { margin-bottom: 0; }
+
+      .entry-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 14px;
+      }
+      .entry-title { font-weight: 600; color: var(--fg); font-size: 9.6pt; }
+      .entry-org { font-weight: 400; color: var(--muted); }
+      .entry-when {
+        flex: none;
+        font-size: 8.8pt;
+        color: var(--faint);
+        font-variant-numeric: tabular-nums;
+      }
+
+      ul { margin: 4px 0 0; padding-left: 15px; }
+      li { margin-bottom: 1px; }
+      li::marker { color: #b4b4b8; }
+
+      .stack { margin: 0; display: grid; grid-template-columns: 104px 1fr; gap: 6px 12px; }
+      .stack dt { color: var(--faint); font-size: 8.8pt; }
+      .stack dd { margin: 0; color: var(--fg); }
+
+      strong { color: var(--fg); font-weight: 600; }
+      .note { color: var(--faint); }
+    </style>
+  </head>
+
+  <body>
+    <div class="sheet">
+      <header>
+        <h1>Bruno Ortiz Blanco</h1>
+        <p class="role"><em>Software Developer</em></p>
+        <p class="contact">
+          Gijón, Spain <span>·</span>
+          <a href="mailto:info@brunob.dev">info@brunob.dev</a> <span>·</span>
+          <a href="https://brunob.dev">brunob.dev</a> <span>·</span>
+          <a href="https://github.com/ibrunob">github.com/ibrunob</a> <span>·</span>
+          <a href="https://www.linkedin.com/in/brunob-dev/">linkedin.com/in/brunob-dev</a>
+        </p>
+
+        <p class="summary">
+          Full-stack developer who ships things people actually use. Built a
+          League of Legends scenario tool that took <strong>40,000 visitors and 1.5M
+          requests</strong> in 48 hours while broadcast live on Twitch, and wrote a
+          university lab's sensor platform end to end: PHP API, React dashboard,
+          C++ firmware. Works across both sides of AI: computer-vision and NLP
+          pipelines of my own, and LLM-backed products with agent orchestration
+          and guardrails.
+        </p>
+      </header>
+
+      <h2>Experience</h2>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <span class="entry-title">Programmer</span>
+            <span class="entry-org">· MediaLab, University of Oviedo</span>
+          </div>
+          <div class="entry-when">Jan 2026 – Mar 2026</div>
+        </div>
+        <ul>
+          <li>
+            Built most of <strong>SensorLab</strong>, the lab's sensor platform: a PHP REST
+            API and a React + TypeScript dashboard, covering session
+            authentication, organisation-scoped access control and a three-tier
+            role system.
+          </li>
+          <li>
+            Shipped the dashboard as a draggable widget grid: Recharts time
+            series, Leaflet heatmaps over the sensor map, jsPDF report export.
+            The same front end became the base for the lab's panic-button
+            platform. Also wrote the C++ firmware for a LoRa air-quality station.
+          </li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <span class="entry-title">Junior Application Developer</span>
+            <span class="entry-org">· Omnia 7D / MANTOTAL</span>
+          </div>
+          <div class="entry-when">Mar 2025 – Jul 2025</div>
+        </div>
+        <ul>
+          <li>
+            Built an Android app for field employees wired to the company
+            intranet, database and FTP server (Java, PHP, MySQL).
+          </li>
+          <li>
+            Built a Python machine-learning tool recognising buildings, doorways
+            and kerb ramps in 360º Insta360 footage, and designed the relational
+            database for the Cáceres city council GIS project.
+          </li>
+        </ul>
+      </div>
+
+      <h2>Selected projects</h2>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <span class="entry-title">LEC final-matchday scenario visualiser</span>
+            <span class="entry-org">· personal project</span>
+          </div>
+          <div class="entry-when">2026</div>
+        </div>
+        <ul>
+          <li>
+            Interactive view of all <strong>4,096 possible outcomes</strong> of the final
+            League of Legends European Championship matchday. Used live on
+            stream by Ibai, Caedrel and LoL Esports: <strong>40,000+ unique visitors,
+            1.5M+ requests and 10,000+ concurrent users</strong> at peak, responses
+            under two seconds, no downtime.
+          </li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <span class="entry-title">dupay.lol</span>
+            <span class="entry-org">· personal project, in progress</span>
+          </div>
+          <div class="entry-when">2026</div>
+        </div>
+        <ul>
+          <li>
+            A demand market where people declare what they would pay for
+            products that do not exist yet, ranking ideas by willingness to pay.
+            Submissions are open with no account, so every entry passes
+            model-backed moderation and validation before publication. Next.js
+            on Vercel.
+          </li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <span class="entry-title">Chest X-ray anonymisation</span>
+            <span class="entry-org">· TREE AIBiomed Hackathon, Treelogic</span>
+          </div>
+          <div class="entry-when">2026</div>
+        </div>
+        <ul>
+          <li>
+            Removes patient data burned into radiograph pixels, where stripping
+            DICOM metadata cannot reach it: YOLOv8 text detection, Tesseract OCR
+            and spaCy NER to classify protected health information, served over
+            FastAPI in Docker. <strong>F1 of 0.929</strong> with every non-PHI region
+            preserved, on CPU alone.
+          </li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <span class="entry-title">DevLog AI</span>
+            <span class="entry-org">· personal project</span>
+          </div>
+          <div class="entry-when">2026</div>
+        </div>
+        <ul>
+          <li>
+            Turns GitHub commits into structured engineering logs through the
+            OpenAI API. Connects over GitHub OAuth and sanitises diffs before
+            they reach the model, keeping secrets out of the prompt and tokens
+            encrypted at rest.
+          </li>
+        </ul>
+      </div>
+
+      <h2>Education</h2>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <span class="entry-title">BSc Computer Science</span>
+            <span class="entry-org">· Escuela Politécnica de Ingeniería, University of Oviedo</span>
+          </div>
+          <div class="entry-when">2026 – present</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <span class="entry-title">Higher Diploma, Multiplatform Application Development</span>
+            <span class="entry-org">· CIFP La Laboral</span>
+          </div>
+          <div class="entry-when">2024 – 2026</div>
+        </div>
+        <ul>
+          <li>
+            Graduated <strong>top of cohort</strong> with a 9.35.
+          </li>
+          <li>
+            <strong>SpainSkills Web Development:</strong> regional champion for Asturias
+            (2025), then <strong>15th nationally</strong> (2026).
+          </li>
+        </ul>
+      </div>
+
+      <h2>Technical skills</h2>
+      <dl class="stack">
+        <dt>Languages</dt>
+        <dd>TypeScript, JavaScript, Java, Kotlin, Python, PHP, C++, SQL</dd>
+
+        <dt>Frontend</dt>
+        <dd>React, Next.js, Vite, Tailwind CSS, TanStack Query, Recharts, Leaflet</dd>
+
+        <dt>Backend &amp; data</dt>
+        <dd>Node.js, Spring Boot, Laravel, FastAPI, PostgreSQL (Neon, Supabase), MySQL, MongoDB, Prisma</dd>
+
+        <dt>LLM engineering</dt>
+        <dd>LLM provider APIs, agents and multi-step orchestration, guardrails and content moderation</dd>
+
+        <dt>Machine learning</dt>
+        <dd>Computer vision (YOLOv8, custom dataset training), NER (spaCy), OCR (Tesseract), time-series forecasting (Markov, ETS), NumPy, Pandas, Matplotlib</dd>
+
+        <dt>Mobile &amp; tooling</dt>
+        <dd>Android (Jetpack Compose), React Native, Git, GitHub Actions, Docker, Vercel, Figma</dd>
+
+        <dt>Spoken</dt>
+        <dd>Spanish (native) · English (C1)</dd>
+      </dl>
+    </div>
+  </body>
+</html>

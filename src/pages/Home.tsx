@@ -20,11 +20,11 @@ export function Home() {
           <p className="text-lg text-muted">{site.role}</p>
         </div>
 
-        <p className="text-justify hyphens-auto text-xl leading-relaxed text-fg"><Rich text={site.intro} />
+        <p className="text-center text-xl leading-relaxed text-fg"><Rich text={site.intro} />
         </p>
       </div>
 
-      <div className="text-justify hyphens-auto space-y-4 leading-relaxed text-muted">
+      <div className="space-y-4 leading-relaxed text-muted">
         {site.home.map((paragraph, i) => (
           <p key={i}>
             <Rich text={paragraph} />
@@ -60,6 +60,11 @@ export function Home() {
               <ExternalLink href={link.href}>{link.label}</ExternalLink>
             </li>
           ))}
+          <li>
+            <ExternalLink href={site.cv} download>
+              Download CV
+            </ExternalLink>
+          </li>
         </ul>
       </Section>
     </div>

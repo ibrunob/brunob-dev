@@ -45,6 +45,7 @@ export const site = {
   role: 'Software Developer',
   url: 'https://brunob.dev',
   email: 'info@brunob.dev',
+  cv: '/cv/Bruno_Ortiz_Blanco_CV.pdf',
 
   /** Not rendered any more: /about says all of this in prose. It stays as
    *  data because the structured data takes the locality from it, and the OG
@@ -68,11 +69,11 @@ export const site = {
       'companies around Asturias, and spent three months at MediaLab, where I ' +
       'wrote the **API**, the dashboard and the firmware of their sensor platform.',
     'The project I am proudest of started as a way to visualise the 4,096 ' +
-      'possible outcomes of the last LEC matchday. It ended up being used on ' +
-      'stream by **Ibai, Caedrel and LoL Esports**: over **40,000 unique ' +
-      'visitors**, ' +
-      '1.5 million requests, and a peak of more than 10,000 people on the ' +
-      'site at once while responses stayed under two seconds.',
+      'possible outcomes of the last LEC matchday. The tool ended up on ' +
+      'stream in the hands of **major figures of the esports scene**: Ibai, ' +
+      'Caedrel and LoL Esports. It pulled over **40,000 unique visitors**, ' +
+      '1.5 million requests and a peak of more than 10,000 people on the ' +
+      'site at once, with responses staying under two seconds.',
   ],
 
   about: [

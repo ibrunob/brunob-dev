@@ -57,5 +57,6 @@ npm run lint       # eslint (flat config, typescript-eslint)
 ## Notes
 
 - Contact address is `info@brunob.dev`; the git identity is `altbrunob@gmail.com` and is not the public address.
-- Content in `site.ts` came from Bruno's LinkedIn, his CV, his public GitHub repos and his commits in the `MediaLabUniovi` organisation. The CV carried his phone number and is deliberately **not** on the site or in `public/` any more; do not reintroduce either.
+- Content in `site.ts` came from Bruno's LinkedIn, his CV, his public GitHub repos and his commits in the `MediaLabUniovi` organisation.
+- The CV is written in `cv/cv.html` and exported to `public/cv/` by printing it to PDF from the browser (margins None, background graphics on). The old CV carried a phone number, which is why it was pulled from the site once; the current one deliberately has none, so check any replacement before publishing it.
 - Most of the MediaLab repositories are **private**. Those projects are described at feature level with no repo links; only `Healthcare_CuboLab` is public. Do not add links to private repos.
