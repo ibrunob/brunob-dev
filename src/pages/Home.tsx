@@ -12,17 +12,18 @@ export function Home() {
 
   return (
     <div className="space-y-16">
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-4xl font-medium tracking-tight text-fg">
-            {site.name}
-          </h1>
-          <p className="text-lg text-muted">{site.role}</p>
-        </div>
-
-        <p className="text-center text-xl leading-relaxed text-fg"><Rich text={site.intro} />
-        </p>
+      <div>
+        <h1 className="text-4xl font-medium tracking-tight text-fg">
+          {site.name}
+        </h1>
+        <p className="text-lg text-muted">{site.role}</p>
       </div>
+
+      {/* Sits at the top level rather than inside the name block, so the
+          space-y-16 rhythm gives it the same gap above and below. */}
+      <p className="text-center text-xl leading-relaxed text-fg">
+        <Rich text={site.intro} />
+      </p>
 
       <div className="space-y-4 leading-relaxed text-muted">
         {site.home.map((paragraph, i) => (
