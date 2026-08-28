@@ -61,8 +61,8 @@ export function About() {
       <Section title="CV">
         <p className="text-justify hyphens-auto text-muted">
           One page, kept in step with this site.{' '}
-          <ExternalLink href={site.cv} download>
-            Download it here
+          <ExternalLink href={site.cv} newTab>
+            Open the PDF
           </ExternalLink>
           .
         </p>

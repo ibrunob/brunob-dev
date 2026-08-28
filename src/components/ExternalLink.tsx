@@ -5,20 +5,20 @@ export function ExternalLink({
   href,
   children,
   className,
-  download,
+  newTab,
 }: {
   href: string
   children: React.ReactNode
   className?: string
-  download?: boolean
+  /** Overrides the guess for same-origin links that should still open away. */
+  newTab?: boolean
 }) {
-  const external = href.startsWith('http')
+  const external = newTab ?? href.startsWith('http')
 
   return (
     <a
       href={href}
       {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}
-      {...(download ? { download: '' } : {})}
       className={cn(
         'group inline-flex items-center gap-0.5 rounded-sm text-fg underline decoration-border underline-offset-4 transition-colors duration-150 hover:decoration-accent hover:text-accent',
         className,

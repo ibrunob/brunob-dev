@@ -62,8 +62,8 @@ export function Home() {
             </li>
           ))}
           <li>
-            <ExternalLink href={site.cv} download>
-              Download CV
+            <ExternalLink href={site.cv} newTab>
+              CV (PDF)
             </ExternalLink>
           </li>
         </ul>
