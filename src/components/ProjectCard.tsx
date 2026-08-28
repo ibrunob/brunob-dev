@@ -32,7 +32,7 @@ export function ProjectCard({ project }: { project: Project }) {
         </span>
       </div>
 
-      <p className="text-justify hyphens-auto mt-1 text-muted">
+      <p className="mt-1 text-muted">
         <Rich text={project.description} />
       </p>
 
