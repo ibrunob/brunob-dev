@@ -206,23 +206,25 @@ export const site = {
       featured: true,
     },
     {
-      // TODO: add the real name of the LEC site and its link (repo and/or demo).
       slug: 'lec-scenarios',
       title: 'LEC final-matchday scenario visualiser',
       description:
         'An interactive view of all 4,096 possible outcomes of the last LEC matchday. Ibai, Caedrel and LoL Esports used it live on stream. It held 40k+ unique visitors, 1.5M+ requests and **10,000+ concurrent users at peak** without going down.',
       year: '2026',
       tags: ['Web', 'Scaling'],
+      demo: 'https://brunob.me/lecVersus/',
       featured: true,
     },
     {
-      // Private repositories in the MediaLabUniovi organisation, so no links.
+      // Repositories in the MediaLabUniovi organisation are private; the demo
+      // is the public dashboard.
       slug: 'sensorlab',
       title: 'SensorLab',
       description:
         'The sensor platform for MediaLab at the University of Oviedo: a PHP REST API with a **React and TypeScript dashboard** on top, behind session auth and organisation-scoped permissions. The dashboard is a draggable grid of widgets, with Recharts for the series, Leaflet heatmaps for the sensor map and jsPDF for exported reports. The same front end became their panic-button platform.',
       year: '2026',
       tags: ['React', 'TypeScript', 'Tailwind CSS', 'PHP'],
+      demo: 'https://sensores.medialab-uniovi.es/',
       featured: true,
     },
     {
